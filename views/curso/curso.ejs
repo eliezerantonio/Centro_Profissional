@@ -1,0 +1,215 @@
+<%- include ('../partials/head.partials.ejs') %>
+
+    <body>
+        <!-- Sidenav -->
+        <%- include ('../partials/menus.partials.ejs') %>
+            <!-- Main content -->
+            <div class="main-content">
+                <!-- Top navbar -->
+                <%- include ('../partials/navbar.partials.ejs') %>
+                    <!-- Header -->
+                    <div class="header bg-gradient-primary py-5 pt-md-8">
+                        <div class="container-fluid">
+                            <div class="header-body">
+                                <!-- Card stats -->
+                                <div class="row">
+                                    <!--Curso-->
+                                    <div class="col-xl-3 col-lg-6">
+                                        <div class="card card-stats mb-4 mb-xl-0">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <h5 class="card-title text-uppercase text-muted mb-0">Cursos</h5>
+                                                        <span class="h2 font-weight-bold mb-0"><%=cursos.length%></span>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                                                            <i class="fas fa-chart-bar"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <p class="mt-3 mb-0 text-muted text-sm">
+                                                    <a href="#" data-toggle="modal" data-target="#modalCadastrarCurso"> <i class="fas fa-plus mr-2"></i>Cadastrar</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="modal fade" id="modalCadastrarCurso" tabindex="-1" role="dialog" aria-labelledby="modalLabelCadastrarCurso" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="modalLabelCadastrarCurso">Cadastrar Curso</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form method="POST" action="/admin/curso/save">
+
+                                                            <div class="form-group ">
+                                                                <label for="title-name " class="col-form-label ">Nome:</label>
+                                                                <input type="text " class="form-control " name="nome" id="title-name ">
+
+                                                            </div>
+                                                            <div class="form-group ">
+                                                                <label for="description-text " class="col-form-label ">Sigla</label>
+                                                                <input type="text " name="sigla" class="form-control " id="title-name ">
+
+                                                            </div>
+
+                                                            <div class="form-group ">
+                                                                <label for="description-text " class="col-form-label ">Codigo</label>
+                                                                <input type="text " name="codigo" class="form-control " id="title-name ">
+
+                                                            </div>
+
+                                                    </div>
+                                                    <div class="modal-footer ">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                                        <button type="submit " class="btn btn-primary" btn-add-course>Cadastrar</button>
+                                                    </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+                                    </div>
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Page content -->
+                    <div class="container-fluid mt-5">
+
+                        <div class="row mt-5">
+                            <div class="col-12 mb-5 mb-xl-0">
+                                <div class="card shadow">
+                                    <div class="card-header border-0">
+                                        <div class="row align-items-center">
+                                            <div class="col">
+                                                <h3 class="mb-0">cursos</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <!-- Projects table -->
+                                        <table class="table align-items-center table-flush table table-hover table-sm">
+                                            <thead class="thead-dark">
+                                                <tr class="animate-zoom">
+                                                    <th scope="col">Nº</th>
+                                                    <th scope="col">Descrição do Curso</th>
+                                                    <th scope="col">Sigla</th>
+                                                    <th scope="col">Codigo</th>
+                                                    <th scope="col">Opções</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                <% cursos.forEach(curso => { %>
+                                                    <tr>
+                                                        <td>
+                                                            <%=curso.id%>
+                                                        </td>
+                                                        <td>
+                                                            <%=curso.nome%>
+                                                        </td>
+                                                        <td>
+                                                            <%=curso.sigla%>
+                                                        </td>
+                                                        <td>
+                                                            <%=curso.codigo%>
+                                                        </td>
+                                                        <td>
+                                                            <a href="/admin/curso/edit/<%=curso.id  %> "> <i title="Editar" class="fas fa-edit ml-3 animate-zoom"></i></a>
+
+                                                            <a href="#" onclick="mostrarValor(<%=curso.id  %>)">
+                                                                <i class="fas fa-trash-alt "> </i>
+                                                            </a>
+
+
+                                                        </td>
+                                                    </tr>
+                                                    <% }); %>
+
+
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- Footer -->
+                        <%- include ('../partials/footer.partials.ejs') %>
+                    </div>
+            </div>
+    </body>
+
+    <div class="modal fade" id="modalEliminarCurso" tabindex="-1" role="dialog" aria-labelledby="modalLabelEliminarCurso" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h3 class="modal-title" id="modalLabelEliminarCurso">
+
+                        Tem certeza que pretende Eliminar ?
+
+
+                    </h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+
+
+
+
+                </div>
+                <div class="modal-footer ">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <form method="POST" action="/admin/curso/delete/">
+                        <input type="hidden" name="id" id="idCursoDelete" value="">
+                        <button type="submit " class="btn btn-danger" onclick="" btn-add-course>Eliminar</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function mostrarValor(id) {
+
+
+            localStorage.setItem("id", id)
+            abreModal()
+        }
+
+        function abreModal() {
+
+            document.getElementById("idCursoDelete").value = localStorage.getItem("id")
+
+            $("#modalEliminarCurso").modal({
+                show: true
+
+
+            });
+
+            localStorage.removeItem("id")
+
+
+
+        }
+
+        function setId() {
+
+        }
+    </script>
+    </script>
