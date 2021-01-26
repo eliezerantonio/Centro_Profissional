@@ -45,20 +45,20 @@
                                                     <div class="modal-body">
                                                         <form method="POST" action="/admin/turma/save">
 
-                                                            <div class="form-group ">
-                                                                <label for="title-name " class="col-form-label ">Descrição:</label>
-                                                                <input type="text " class="form-control " value name=" descricao " id="title-name ">
+                                                            <div class="form-group">
+                                                                <label for="title-name" class="col-form-label ">Descrição:</label>
+                                                                <input type="text" class="form-control " value name="descricao" id="title-name">
                                                                 <% if(descricao_msg.length>0){ %>
                                                                     <div class="alert alert-danger ">
                                                                         <%=descricao_msg%>
                                                                     </div>
                                                                     <%}%>
                                                             </div>
-                                                            <div class="form-group ">
-                                                                <label for="description-text " class="col-form-label ">Sala</label>
-                                                                <input type="text " name="sala " class="form-control " id="title-name ">
+                                                            <div class="form-group">
+                                                                <label for="description-text" class="col-form-label">Sala</label>
+                                                                <input type="text" name="sala" class="form-control" id="title-name">
                                                                 <% if(sala_msg.length>0){ %>
-                                                                    <div class="alert alert-danger ">
+                                                                    <div class="alert alert-danger">
                                                                         <%=sala_msg%>
                                                                     </div>
                                                                     <%}%>
@@ -67,12 +67,7 @@
                                                     </div>
                                                     <div class="modal-footer ">
                                                         <button type="button " class="btn btn-secondary " data-dismiss="modal ">Fechar</button>
-                                                        <button type="submit " class="btn btn-primary " <% if(sala_msg.length>0){ %>
-                                                            btn-add-course
-                                                           <%}else{ %>
-                                                            btn-add-course-error
-                                                          <% }%>>
-                                                            Cadastrar</button>
+                                                        <button type="submit " class="btn btn-primary " btn-add-course>Cadastrar</button>
                                                     </div>
                                                     </form>
                                                 </div>
