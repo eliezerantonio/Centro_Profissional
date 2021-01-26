@@ -91,7 +91,7 @@ class TurmasService {
         var errorCount = 0;
 
         //title validation
-        if (turma.descricao == undefined || turma.descricao == '') {
+        if (turma.descricao == undefined || turma.descricao === '') {
             errors.descricao_msg = "Descrição inválida!";
             errorCount++;
         } else {
@@ -101,7 +101,7 @@ class TurmasService {
             }
         }
 
-        if (turma.sala == undefined || turma.sala == '') {
+        if (turma.sala == undefined || turma.sala === '') {
             errors.sala_msg = "Sala inválida!";
             errorCount++;
         } else {
