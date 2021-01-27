@@ -11,7 +11,7 @@ class alunoController {
             alunos,
             nome_msg: req.flash('nome_msg'),
 
-        })
+        });
 
     }
 
@@ -21,9 +21,6 @@ class alunoController {
         var { nome, bilhete, telemovel, endereco } = req.body;
 
         var aluno = { nome, bilhete, telemovel, endereco }
-
-
-
 
         var result = await AlunosServices.save(aluno);
 
@@ -60,12 +57,9 @@ class alunoController {
 
     async update(req, res) {
 
-
-
         var { nome, id, bilhete, telemovel, endereco } = req.body;
 
         var aluno = { id, nome, bilhete, telemovel, endereco }
-
 
         var result = await AlunosServices.update(id, aluno);
 
@@ -76,8 +70,6 @@ class alunoController {
 
             res.redirect('/sistema/aluno/edit/' + id);
         }
-
-
     }
 
 
