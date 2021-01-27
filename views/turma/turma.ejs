@@ -125,43 +125,9 @@
                                                         </td>
                                                         <td>
                                                             <a href="/admin/turma/edit/<%=turma.id %> "> <i title="Editar" class="fas fa-edit ml-3 animate-zoom"></i></a>
-                                                            <a href="/admin/turma/delete" name="id" data-toggle="modal" data-target="#modalEliminarCurso"> <i title="Eliminar " class="fas fa-trash ml-3 "></i></a>
-                                                            <form action="/admin/turma/delete" method="POST">
-                                                                <input type="hidden" name="id" value="<%=turma.id%>">
-
-                                                                <!--Modal eliminar-->
-                                                                <div class="modal fade" id="modalEliminarCurso" tabindex="-1" role="dialog" aria-labelledby="modalLabelEliminarCurso" aria-hidden="true">
-                                                                    <div class="modal-dialog" role="document">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-
-                                                                                <h3 class="modal-title" id="modalLabelEliminarCurso">
-
-                                                                                    Tem certeza que pretende Eliminar ?
-
-
-                                                                                </h3>
-                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-
-
-
-
-                                                                            </div>
-                                                                            <div class="modal-footer ">
-                                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                                                                <form method="POST" action="/admin/turma/delete/">
-                                                                                    <button type="submit " class="btn btn-danger" btn-add-course>Eliminar</button>
-                                                                                </form>
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <!-- fim modal exluir -->
-
-                                                            </form>
+                                                            <a href="#" onclick="mostrarValor( " <%=turma.id %>")">
+                                                                <i class="fas fa-trash-alt "> </i>
+                                                            </a>
 
 
 
@@ -183,3 +149,60 @@
                     </div>
             </div>
     </body>
+
+
+    <div class="modal fade" id="modalLabelTurma" tabindex="-1" role="dialog" aria-labelledby="modalLabelEliminarTurma" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h3 class="modal-title" id="modalLabelEliminarTurma">
+
+                        Tem certeza que pretende Eliminar ?
+
+                    </h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer ">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <form method="POST" action="/admin/turma/delete/">
+                        <input type="hidden" name="id" id="idCursoDelete" value="">
+                        <button type="submit " class="btn btn-danger" onclick="" btn-add-course>Eliminar</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function mostrarValor(id) {
+
+
+            localStorage.setItem("id", id)
+            abreModal()
+        }
+
+        function abreModal() {
+
+            document.getElementById("idCursoDelete").value = localStorage.getItem("id")
+
+            $("#modalLabelTurma").modal({
+                show: true
+
+
+            });
+
+            localStorage.removeItem("id")
+
+
+
+        }
+
+        function setId() {
+
+        }
+    </script>
