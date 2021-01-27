@@ -46,6 +46,8 @@ const periodo = require('./routes/periodos_router')
 app.use('/', periodo)
 const curso = require('./routes/cursos_router')
 app.use('/', curso)
+const aluno = require('./routes/alunos_router')
+app.use('/', aluno)
 
 
 //TURMA ROTA

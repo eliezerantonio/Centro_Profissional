@@ -27,11 +27,11 @@ class PeriodoController {
         var result = await PeriodoServices.save(periodo);
 
         if (result == true) {
-            res.redirect("/admin/periodo")
+            res.redirect("/sistema/periodo")
         } else {
             req.flash('nome_msg', result.nome_msg)
 
-            res.redirect('/admin/periodo');
+            res.redirect('/sistema/periodo');
         }
 
 
@@ -53,7 +53,7 @@ class PeriodoController {
         var id = req.body.id;
 
         await PeriodosServices.delete(id);
-        res.redirect("/admin/periodo")
+        res.redirect("/sistema/periodo")
 
     }
 
@@ -68,11 +68,11 @@ class PeriodoController {
         var result = await PeriodoServices.update(id, periodo);
 
         if (result == true) {
-            res.redirect("/admin/periodo")
+            res.redirect("/sistema/periodo")
         } else {
             req.flash('nome_msg', result.nome_msg)
 
-            res.redirect('/admin/periodo/edit/' + id);
+            res.redirect('/sistema/periodo/edit/' + id);
         }
 
 

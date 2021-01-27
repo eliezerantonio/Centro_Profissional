@@ -26,11 +26,11 @@ class TurmasController {
         var result = await TurmasServices.save(turma);
 
         if (result == true) {
-            res.redirect("/admin/turma")
+            res.redirect("/sistema/turma")
         } else {
             req.flash('descricao_msg', result.descricao_msg)
             req.flash('sala_msg', result.sala_msg)
-            res.redirect('/admin/turma');
+            res.redirect('/sistema/turma');
         }
 
 
@@ -51,7 +51,7 @@ class TurmasController {
         var id = req.body.id;
 
         await TurmasServices.delete(id);
-        res.redirect("/admin/turma")
+        res.redirect("/sistema/turma")
 
     }
 
@@ -66,11 +66,11 @@ class TurmasController {
         var result = await TurmasServices.update(id, turma);
 
         if (result == true) {
-            res.redirect("/admin/turma")
+            res.redirect("/sistema/turma")
         } else {
             req.flash('descricao_msg', result.descricao_msg)
             req.flash('sala_msg', result.sala_msg)
-            res.redirect('/admin/turma/edit/' + id);
+            res.redirect('/sistema/turma/edit/' + id);
         }
 
 

@@ -43,7 +43,7 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form method="POST" action="/admin/turma/save">
+                                                        <form method="POST" action="/sistema/turma/save">
 
                                                             <div class="form-group">
                                                                 <label for="title-name" class="col-form-label ">Descrição:</label>
@@ -124,7 +124,7 @@
                                                             <%=turma.sala%>
                                                         </td>
                                                         <td>
-                                                            <a href="/admin/turma/edit/<%=turma.id %> "> <i title="Editar" class="fas fa-edit ml-3 animate-zoom"></i></a>
+                                                            <a href="/sistema/turma/edit/<%=turma.id %> "> <i title="Editar" class="fas fa-edit ml-3 animate-zoom"></i></a>
                                                             <a href="#" onclick="mostrarValor( " <%=turma.id %>")">
                                                                 <i class="fas fa-trash-alt "> </i>
                                                             </a>
@@ -168,7 +168,7 @@
                 </div>
                 <div class="modal-footer ">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <form method="POST" action="/admin/turma/delete/">
+                    <form method="POST" action="/sistema/turma/delete/">
                         <input type="hidden" name="id" id="idCursoDelete" value="">
                         <button type="submit " class="btn btn-danger" onclick="" btn-add-course>Eliminar</button>
                     </form>

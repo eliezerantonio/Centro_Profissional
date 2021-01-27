@@ -26,11 +26,11 @@ class CursoController {
         var result = await CursosServices.save(curso);
 
         if (result == true) {
-            res.redirect("/admin/curso")
+            res.redirect("/sistema/curso")
         } else {
             req.flash('nome_msg', result.nome_msg)
 
-            res.redirect('/admin/curso');
+            res.redirect('/sistema/curso');
         }
 
 
@@ -52,7 +52,7 @@ class CursoController {
         var id = req.body.id;
 
         await CursosServices.delete(id);
-        res.redirect("/admin/curso")
+        res.redirect("/sistema/curso")
 
     }
 
@@ -67,11 +67,11 @@ class CursoController {
         var result = await CursosServices.update(id, Curso);
 
         if (result == true) {
-            res.redirect("/admin/curso")
+            res.redirect("/sistema/curso")
         } else {
             req.flash('nome_msg', result.nome_msg)
 
-            res.redirect('/admin/curso/edit/' + id);
+            res.redirect('/sistema/curso/edit/' + id);
         }
 
 
