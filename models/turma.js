@@ -6,7 +6,9 @@ module.exports = (sequelize, DataTypes) => {
     class Turma extends Model {
 
         static associate(models) {
-
+            this.hasMany(models.Matricula, {
+                as: 'Matriculas'
+            })
         }
     };
     Turma.init({

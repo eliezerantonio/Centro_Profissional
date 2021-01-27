@@ -48,6 +48,10 @@ const curso = require('./routes/cursos_router')
 app.use('/', curso)
 const aluno = require('./routes/alunos_router')
 app.use('/', aluno)
+const funcioanrio = require('./routes/funcionarios_router')
+app.use('/', funcioanrio)
+const matricula = require('./routes/matricula_router')
+app.use('/', matricula)
 
 
 //TURMA ROTA
