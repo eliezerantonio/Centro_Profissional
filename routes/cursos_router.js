@@ -3,14 +3,14 @@ const cursoController = require("../controllers/CursoController");
 const router = express.Router();
 
 
-router.get('/admin/curso', cursoController.index)
+router.get('/sistema/curso', cursoController.index)
 
-router.post('/admin/curso/save', cursoController.save)
-router.get('/admin/curso/edit/:id', cursoController.edit)
+router.post('/sistema/curso/save', cursoController.save)
+router.get('/sistema/curso/edit/:id', cursoController.edit)
 
-router.post('/admin/curso/update', cursoController.update);
+router.post('/sistema/curso/update', cursoController.update);
 
-router.post('/admin/curso/delete/', cursoController.delete);
+router.post('/sistema/curso/delete/', cursoController.delete);
 
 
 module.exports = router;

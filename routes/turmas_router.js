@@ -3,15 +3,15 @@ const TurmaController = require("../controllers/TurmaController");
 const router = express.Router();
 
 
-router.get('/admin/turma', TurmaController.index)
+router.get('/sistema/turma', TurmaController.index)
 
-router.post('/admin/turma/save', TurmaController.save)
-router.get('/admin/turma/edit/:id', TurmaController.edit)
+router.post('/sistema/turma/save', TurmaController.save)
+router.get('/sistema/turma/edit/:id', TurmaController.edit)
 
-router.post('/admin/turma/update', TurmaController.update);
+router.post('/sistema/turma/update', TurmaController.update);
 
 
-router.post('/admin/turma/delete', TurmaController.delete);
+router.post('/sistema/turma/delete', TurmaController.delete);
 
 
 module.exports = router;

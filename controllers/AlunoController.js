@@ -23,14 +23,16 @@ class alunoController {
         var aluno = { nome, bilhete, telemovel, endereco }
 
 
+
+
         var result = await AlunosServices.save(aluno);
 
         if (result == true) {
-            res.redirect("/admin/aluno")
+            res.redirect("/sistema/aluno")
         } else {
             req.flash('nome_msg', result.nome_msg)
 
-            res.redirect('/admin/aluno');
+            res.redirect('/sistema/aluno');
         }
 
 
@@ -52,7 +54,7 @@ class alunoController {
         var id = req.body.id;
 
         await AlunosServices.delete(id);
-        res.redirect("/admin/aluno")
+        res.redirect("/sistema/aluno")
 
     }
 
@@ -68,11 +70,11 @@ class alunoController {
         var result = await AlunosServices.update(id, aluno);
 
         if (result == true) {
-            res.redirect("/admin/aluno")
+            res.redirect("/sistema/aluno")
         } else {
             req.flash('nome_msg', result.nome_msg)
 
-            res.redirect('/admin/aluno/edit/' + id);
+            res.redirect('/sistema/aluno/edit/' + id);
         }
 
 

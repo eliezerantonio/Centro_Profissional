@@ -43,7 +43,7 @@
                                     </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form method="POST" action="/admin/curso/save">
+                                                        <form method="POST" action="/sistema/curso/save">
 
                                                             <div class="form-group ">
                                                                 <label for="title-name " class="col-form-label ">Nome:</label>
@@ -126,7 +126,7 @@
                                                             <%=curso.codigo%>
                                                         </td>
                                                         <td>
-                                                            <a href="/admin/curso/edit/<%=curso.id  %> "> <i title="Editar" class="fas fa-edit ml-3 animate-zoom"></i></a>
+                                                            <a href="/sistema/curso/edit/<%=curso.id  %> "> <i title="Editar" class="fas fa-edit ml-3 animate-zoom"></i></a>
 
                                                             <a href="#" onclick="mostrarValor(<%=curso.id  %>)">
                                                                 <i class="fas fa-trash-alt "> </i>
@@ -174,7 +174,7 @@
                 </div>
                 <div class="modal-footer ">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <form method="POST" action="/admin/curso/delete/">
+                    <form method="POST" action="/sistema/curso/delete/">
                         <input type="hidden" name="id" id="idCursoDelete" value="">
                         <button type="submit " class="btn btn-danger" onclick="" btn-add-course>Eliminar</button>
                     </form>

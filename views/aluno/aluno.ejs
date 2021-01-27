@@ -13,14 +13,14 @@
                             <div class="header-body">
                                 <!-- Card stats -->
                                 <div class="row">
-                                    <!--Curso-->
+                                    <!--Aluno-->
                                     <div class="col-xl-3 col-lg-6">
                                         <div class="card card-stats mb-4 mb-xl-0">
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col">
-                                                        <h5 class="card-title text-uppercase text-muted mb-0">Cursos</h5>
-                                                        <span class="h2 font-weight-bold mb-0"><%=cursos.length%></span>
+                                                        <h5 class="card-title text-uppercase text-muted mb-0">Alunos</h5>
+                                                        <span class="h2 font-weight-bold mb-0"><%=alunos.length%></span>
                                                     </div>
                                                     <div class="col-auto">
                                                         <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -29,21 +29,21 @@
                                                     </div>
                                                 </div>
                                                 <p class="mt-3 mb-0 text-muted text-sm">
-                                                    <a href="#" data-toggle="modal" data-target="#modalCadastrarCurso"> <i class="fas fa-plus mr-2"></i>Cadastrar</a>
+                                                    <a href="#" data-toggle="modal" data-target="#modalCadastrarAluno"> <i class="fas fa-plus mr-2"></i>Cadastrar</a>
                                                 </p>
                                             </div>
                                         </div>
-                                        <div class="modal fade" id="modalCadastrarCurso" tabindex="-1" role="dialog" aria-labelledby="modalLabelCadastrarCurso" aria-hidden="true">
+                                        <div class="modal fade" id="modalCadastrarAluno" tabindex="-1" role="dialog" aria-labelledby="modalLabelCadastrarAluno" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="modalLabelCadastrarCurso">Cadastrar Curso</h5>
+                                                        <h5 class="modal-title" id="modalLabelCadastrarAluno">Cadastrar Aluno</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form method="POST" action="/admin/curso/save">
+                                                        <form method="POST" action="/sistema/aluno/save">
 
                                                             <div class="form-group ">
                                                                 <label for="title-name " class="col-form-label ">Nome:</label>
@@ -51,14 +51,20 @@
 
                                                             </div>
                                                             <div class="form-group ">
-                                                                <label for="description-text " class="col-form-label ">Sigla</label>
-                                                                <input type="text " name="sigla" class="form-control " id="title-name ">
+                                                                <label for="description-text " class="col-form-label ">Bilhete</label>
+                                                                <input type="text " name="bilhete" class="form-control " id="title-name ">
 
                                                             </div>
 
                                                             <div class="form-group ">
-                                                                <label for="description-text " class="col-form-label ">Codigo</label>
-                                                                <input type="text " name="codigo" class="form-control " id="title-name ">
+                                                                <label for="description-text " class="col-form-label ">Telemovel</label>
+                                                                <input type="text " name="telemovel" class="form-control " id="title-name ">
+
+                                                            </div>
+
+                                                            <div class="form-group ">
+                                                                <label for="description-text " class="col-form-label ">Endereco</label>
+                                                                <input type="text " name="endereco" class="form-control " id="title-name ">
 
                                                             </div>
 
@@ -93,7 +99,7 @@
                                     <div class="card-header border-0">
                                         <div class="row align-items-center">
                                             <div class="col">
-                                                <h3 class="mb-0">cursos</h3>
+                                                <h3 class="mb-0">alunos</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -103,32 +109,36 @@
                                             <thead class="thead-dark">
                                                 <tr class="animate-zoom">
                                                     <th scope="col">Nº</th>
-                                                    <th scope="col">Descrição do Curso</th>
-                                                    <th scope="col">Sigla</th>
-                                                    <th scope="col">Codigo</th>
+                                                    <th scope="col">Nome</th>
+                                                    <th scope="col">Bilhete</th>
+                                                    <th scope="col">Telemovel</th>
+                                                    <th scope="col">Endereco</th>
                                                     <th scope="col">Opções</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
 
-                                                <% cursos.forEach(curso => { %>
+                                                <% alunos.forEach(aluno => { %>
                                                     <tr>
                                                         <td>
-                                                            <%=curso.id%>
+                                                            <%=aluno.id%>
                                                         </td>
                                                         <td>
-                                                            <%=curso.nome%>
+                                                            <%=aluno.nome%>
                                                         </td>
                                                         <td>
-                                                            <%=curso.sigla%>
+                                                            <%=aluno.bilhete%>
                                                         </td>
                                                         <td>
-                                                            <%=curso.codigo%>
+                                                            <%=aluno.telemovel%>
                                                         </td>
                                                         <td>
-                                                            <a href="/admin/curso/edit/<%=curso.id  %> "> <i title="Editar" class="fas fa-edit ml-3 animate-zoom"></i></a>
+                                                            <%=aluno.endereco%>
+                                                        </td>
+                                                        <td>
+                                                            <a href="/sistema/aluno/edit/<%=aluno.id  %> "> <i title="Editar" class="fas fa-edit ml-3 animate-zoom"></i></a>
 
-                                                            <a href="#" onclick="mostrarValor(<%=curso.id  %>)">
+                                                            <a href="#" onclick="mostrarValor(<%=aluno.id  %>)">
                                                                 <i class="fas fa-trash-alt "> </i>
                                                             </a>
 
@@ -153,12 +163,12 @@
             </div>
     </body>
 
-    <div class="modal fade" id="modalEliminarCurso" tabindex="-1" role="dialog" aria-labelledby="modalLabelEliminarCurso" aria-hidden="true">
+    <div class="modal fade" id="modalEliminarAluno" tabindex="-1" role="dialog" aria-labelledby="modalLabelEliminarAluno" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
 
-                    <h3 class="modal-title" id="modalLabelEliminarCurso">
+                    <h3 class="modal-title" id="modalLabelEliminarAluno">
 
                         Tem certeza que pretende Eliminar ?
 
@@ -174,8 +184,8 @@
                 </div>
                 <div class="modal-footer ">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <form method="POST" action="/admin/curso/delete/">
-                        <input type="hidden" name="id" id="idCursoDelete" value="">
+                    <form method="POST" action="/sistema/aluno/delete/">
+                        <input type="hidden" name="id" id="idAlunoDelete" value="">
                         <button type="submit " class="btn btn-danger" onclick="" btn-add-course>Eliminar</button>
                     </form>
                 </div>
@@ -194,9 +204,9 @@
 
         function abreModal() {
 
-            document.getElementById("idCursoDelete").value = localStorage.getItem("id")
+            document.getElementById("idAlunoDelete").value = localStorage.getItem("id")
 
-            $("#modalEliminarCurso").modal({
+            $("#modalEliminarAluno").modal({
                 show: true
 
 
