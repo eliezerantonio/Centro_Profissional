@@ -52,6 +52,8 @@ const funcioanrio = require('./routes/funcionarios_router')
 app.use('/', funcioanrio)
 const matricula = require('./routes/matricula_router')
 app.use('/', matricula)
+const cursoPeriodo = require('./routes/curso_periodo_router')
+app.use('/', cursoPeriodo)
 
 
 //TURMA ROTA

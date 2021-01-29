@@ -1,24 +1,35 @@
 const Database = require("../models/index");
-class CursosService {
+class CursoPeriodoServices {
 
     constructor() {
-        this.Curso = Database["CursoPeriodo"]
+        this.CursoPeriodo = Database["CursoPeriodo"]
+        this.Curso = Database["Curso"]
+        this.Periodo = Database["Periodo"]
     }
 
     async getAll() {
         try {
-            return await this.Curso.findAll();
+            return await this.CursoPeriodo.findAll({
+                include: [{
+                    model: this.Curso,
+                    as: 'Curso',
+                }, {
+                    model: this.Periodo,
+                    as: 'Periodo',
+                }, ],
+
+            });
 
         } catch (error) {
 
-            return undefined;
+            console.log(error);
 
         }
     }
 
     async getById(id) {
         try {
-            return await this.Curso.findByPk(id);
+            return await this.CursoPeriodoPeriodo.findByPk(id);
 
         } catch (error) {
 
@@ -32,13 +43,13 @@ class CursosService {
         var isValid = this.validate(data, errors);
         if (isValid) {
             try {
-                var Curso = await this.getById(id);
-                Curso.nome = data.nome;
+                var CursoPeriodo = await this.getById(id);
+                CursoPeriodo.nome = data.nome;
 
-                await Curso.save();
+                await CursoPeriodo.save();
                 return true;
             } catch (error) {
-                errors.system_msg = "Não foi possivl editar a Curso";
+                errors.system_msg = "Não foi possivl editar a CursoPeriodo";
                 return errors;
             }
         } else {
@@ -51,32 +62,29 @@ class CursosService {
 
 
         try {
-            await this.Curso.destroy({
+            await this.CursoPeriodo.destroy({
                 where: {
                     id: id
                 }
             });
         } catch (error) {
-            errors.system_msg = "Não foi possivl editar a Curso";
+            errors.system_msg = "Não foi possivl editar a CursoPeriodo";
             return errors;
         }
 
 
     }
-    async save(Cursos) {
-
+    async save(CursoPeriodos) {
         var errors = {};
 
-        var isValid = this.validate(Cursos, errors);
-        if (isValid) {
-
-
+        var isValid = this.validate(CursoPeriodos, errors);
+        if (!isValid) {
             try {
-                await this.Curso.create(Cursos);
+                await this.CursoPeriodo.create(CursoPeriodos);
                 return true;
             } catch (error) {
 
-                errors.system_msg = "Não foi possivl salvar a Curso";
+                errors.system_msg = "Não foi possivl salvar a CursoPeriodo";
                 return errors;
             }
         } else {
@@ -84,21 +92,19 @@ class CursosService {
         }
     }
 
-    validate(Curso, errors) {
+    validate(CursoPeriodo, errors) {
         var errorCount = 0;
 
         //title validation
-        if (Curso.nome == undefined || Curso.nome == '') {
+        if (CursoPeriodo.nome == undefined || CursoPeriodo.nome == '') {
             errors.nome_msg = "Nome inválido!";
             errorCount++;
         } else {
-            if (Curso.nome.length < 3) {
+            if (CursoPeriodo.nome.length < 1) {
                 errors.nome_msg = "Nome inválido!";
                 errorCount++;
             }
         }
-
-
 
         if (errorCount == 0) {
             return true;
@@ -109,4 +115,4 @@ class CursosService {
 
 }
 
-module.exports = new CursosService
+module.exports = new CursoPeriodoServices

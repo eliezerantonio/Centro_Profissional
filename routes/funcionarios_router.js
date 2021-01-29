@@ -11,6 +11,7 @@ router.get('/sistema/funcionario/edit/:id', funcionarioController.edit)
 router.post('/sistema/funcionario/update', funcionarioController.update);
 
 router.post('/sistema/funcionario/delete/', funcionarioController.delete);
+router.get('/sistema/login', funcionarioController.login);
 
 
 module.exports = router;

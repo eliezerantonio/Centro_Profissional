@@ -59,6 +59,12 @@ class FuncionarioController {
 
     }
 
+    login(req, res) {
+
+        res.render("funcionario/login")
+
+    }
+
     async update(req, res) {
 
 
